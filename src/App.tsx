@@ -1,18 +1,16 @@
 import { Routes, Route } from "react-router-dom";
-import { List } from './features/list/list';
-import { AddLink } from './features/addLink/addLink';
+import { Home } from "./pages/home/home";
+import { AddLink } from './pages/addLink/addLink';
 
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <Routes>
-          <Route path="/" element={<List />} />
-          <Route path="/addLink" element={<AddLink />} />
-        </Routes>
-      </header>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/addLink" element={<AddLink />} />
+      </Routes>
     </div>
   );
 }

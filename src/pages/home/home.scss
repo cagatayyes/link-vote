@@ -1,0 +1,14 @@
+.home {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #eeeee4;
+    width: 560px;
+
+    &-seperator {
+        border: 1px solid black;
+        margin: 10px 0;
+        width: 55%;
+    }
+}

@@ -1,0 +1,49 @@
+.submitLink {
+    display: flex;
+    flex-direction: row;
+    height: 80px;
+    width: 50%;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+    text-decoration: none;
+    padding: 10px;
+    background-color: #ecfdf1;
+
+    &-plusContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 90%;
+        min-width: 64px;
+        border: 2px solid #000;
+        border-radius: 8px;
+        margin-right: auto;
+        &-plus {
+            height: 36px;
+            width: 36px;
+        }
+    }
+
+    &-linkContainer {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+    }
+
+    span {
+        text-decoration: none;
+    }
+
+    &-text {
+        text-decoration: none;
+        font-size: 24px;
+        margin-left: 10px;
+        width: 100%;
+        color: #000;
+    }
+}
