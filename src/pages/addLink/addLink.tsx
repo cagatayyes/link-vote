@@ -11,10 +11,11 @@ export function AddLink() {
     const [url, setUrl] = useState<string>('');
     const [name, setName] = useState<string>('');
 
-    console.log("add link");
 
     const addLinkItem = () => {
-        dispatch(addLink({ name, url, id: v1() }))
+        setName('');
+        setUrl('');
+        dispatch(addLink({ name, url, id: v1(), voteCount: 0, voteChangeDate: new Date().getTime() }));
     }
 
     return (
@@ -31,7 +32,7 @@ export function AddLink() {
                 <span className='addLink-inputContainer-label'>
                     Link Name:
                 </span>
-                <input onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                <input value={name} onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                     setName(event.target.value);
                 }} className='addLink-inputContainer-input' placeholder='e.g. Alphabet' />
             </div>
@@ -40,7 +41,7 @@ export function AddLink() {
                 <span className='addLink-inputContainer-label'>
                     Link URL:
                 </span>
-                <input onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                <input value={url} onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                     setUrl(event.target.value);
                 }} className='addLink-inputContainer-input' placeholder='e.g. http://hepsiburada.com' />
             </div>

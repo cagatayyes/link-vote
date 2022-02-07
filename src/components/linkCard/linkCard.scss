@@ -6,6 +6,14 @@
     align-items: center;
     height: 60px;
     margin-top: 10px;
+    position: relative;
+
+    &:hover {
+        background-color: #ffd898;
+        .linkCard-removeButton {
+            display: flex;
+        }
+    }
 
     &-pointsContainer {
         background-color: #ffd898;
@@ -45,5 +53,18 @@
         align-items: center;
         justify-content: space-evenly;
         height: 20px;
+    }
+
+    &-removeButton {
+        display: none;
+        position: absolute;
+        justify-content: center;
+        align-items: center;
+        width: 16px;
+        height: 16px;
+        top: 0;
+        right: 0;
+        outline: none;
+        cursor: pointer;
     }
 }

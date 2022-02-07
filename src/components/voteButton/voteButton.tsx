@@ -4,12 +4,12 @@ import './voteButton.scss';
 
 interface IVoteButtonProps {
     type: ButtonTypes;
-    onClick: Function;
+    onClick: () => void;
 }
 
-export function VoteButton({ type }: IVoteButtonProps) {
+export function VoteButton({ type, onClick }: IVoteButtonProps) {
     return (
-        <button className="voteButton">
+        <button className="voteButton" onClick={onClick}>
             <img className={`voteButton-icon voteButton-icon--${type}`} alt="" src={downArrow} />
 
             <span className="voteButton-text">

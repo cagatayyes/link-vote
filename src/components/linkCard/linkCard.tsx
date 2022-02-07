@@ -1,6 +1,7 @@
 import { VoteButton } from "../voteButton/voteButton";
 import { ButtonTypes } from "../../types/buttonType";
-import { addLink, ILink, removeLink } from '../list/listSlice';
+import { ILink, upVote, downVote, removeLink, sort } from '../list/listSlice';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
 
 import './linkCard.scss'
 
@@ -10,11 +11,25 @@ interface ILinkCardProps {
 
 
 export function LinkCard({ linkItem }: ILinkCardProps) {
+    const dispatch = useAppDispatch();
+    const selectedSort = useAppSelector(state => state.list.selectedSort);
+
+    const onClickUpVote = (id: string) => {
+        dispatch(upVote(id));
+        dispatch(sort(selectedSort));
+    }
+    const onClickDownVote = (id: string) => {
+        dispatch(downVote(id));
+        dispatch(sort(selectedSort));
+    }
+    const onClickRemove = (id: string) => {
+        dispatch(removeLink(id));
+    }
     return (
         <div className="linkCard">
             <div className="linkCard-pointsContainer">
                 <span className="linkCard-pointsContainer-voteCount">
-                    6
+                    {linkItem.voteCount}
                 </span>
                 <span className="linkCard-pointsContainer-text">
                     Votes
@@ -31,10 +46,15 @@ export function LinkCard({ linkItem }: ILinkCardProps) {
                 </span>
 
                 <div className='linkCard-buttonsContainer' >
-                    <VoteButton onClick={addLink} type={ButtonTypes.Up} />
-                    <VoteButton onClick={removeLink} type={ButtonTypes.Down} />
+                    <VoteButton onClick={() => onClickUpVote(linkItem.id)} type={ButtonTypes.Up} />
+                    <VoteButton onClick={() => onClickDownVote(linkItem.id)} type={ButtonTypes.Down} />
                 </div>
+
             </div>
+
+            <button onClick={() => onClickRemove(linkItem.id)} className='linkCard-removeButton'>
+                x
+            </button>
         </div>
     )
 }
