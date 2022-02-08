@@ -1,6 +1,7 @@
 import { VoteButton } from "../voteButton/voteButton";
 import { ButtonTypes } from "../../types/buttonType";
-import { ILink, upVote, downVote, removeLink, sort } from '../list/listSlice';
+import { ILink, upVote, downVote, setItemToBeRemoved, sort } from '../list/listSlice';
+import { changeModalVisibility, showModal } from "../layout/layoutSlice";
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 
 import './linkCard.scss'
@@ -8,7 +9,6 @@ import './linkCard.scss'
 interface ILinkCardProps {
     linkItem: ILink;
 }
-
 
 export function LinkCard({ linkItem }: ILinkCardProps) {
     const dispatch = useAppDispatch();
@@ -23,8 +23,16 @@ export function LinkCard({ linkItem }: ILinkCardProps) {
         dispatch(sort(selectedSort));
     }
     const onClickRemove = (id: string) => {
-        dispatch(removeLink(id));
+        dispatch(changeModalVisibility(true));
+        dispatch(setItemToBeRemoved(id));
+        dispatch(showModal({
+            modalContentText: 'Do you want to remove:',
+            modalContentItem: linkItem.name,
+            modalTitle: 'Remove Link',
+            showModal: true
+        }));
     }
+
     return (
         <div className="linkCard">
             <div className="linkCard-pointsContainer">

@@ -1,0 +1,22 @@
+.pagination {
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+
+    &-pageItem {
+        list-style: none;
+        display: flex;
+        margin-left: 15px;
+        border: 1px solid #fff;
+        padding: 0 3px;
+
+        & > button {
+            background-color: none;
+        }
+
+        &:hover {
+            background-color: wheat;
+            color: #fff;
+        }
+    }
+}

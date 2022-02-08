@@ -1,24 +1,38 @@
-import React from 'react';
-import { useAppSelector, useAppDispatch } from '../../app/hooks';
+import React, { useEffect } from 'react';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { Sorting } from '../../types/sorting';
-import { sort, setSelectedSort } from '../list/listSlice';
+import { sort, setSelectedSort, setList, ILink } from '../list/listSlice';
 
 import { LinkCard } from '../linkCard/linkCard';
+import { Modal } from '../layout/modal/modal';
+import { Toast } from '../layout/toast/toast';
 
 import './list.scss';
 
 
-export function List() {
+interface IListProps {
+    list: Array<ILink>
+}
+
+export function List({ list }: IListProps) {
     const dispatch = useAppDispatch();
-    const list = useAppSelector(state => state.list.list);
+    const selectedSort = useAppSelector(state => state.list.selectedSort);
 
     const onSortApply = (event: React.ChangeEvent<HTMLSelectElement>) => {
         dispatch(sort(event.target.value));
         dispatch(setSelectedSort(event.target.value));
-    }
+    };
+
+    useEffect(() => {
+        dispatch(setList());
+        dispatch(sort(selectedSort));
+    }, []);
 
     return (
         <div className='list'>
+            <Toast />
+            <Modal />
+
             <select onChange={onSortApply} className="list-sortSelectBox">
                 <option value='' disabled >Order by</option>
                 <option value={Sorting.DESC}>Most Voted (Z → A)</option>

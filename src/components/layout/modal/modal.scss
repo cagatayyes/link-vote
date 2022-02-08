@@ -1,0 +1,54 @@
+.modal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 10%;
+    background-color: #fff;
+    width: 50%;
+    border: 1px solid #000;
+    height: 100px;
+    left: 50%;
+    border-radius: 3px;
+    transform: translate(-50%, 0);
+
+    &-titleContainer {
+        display: flex;
+        flex-direction: row;
+        height: 20%;
+        width: 100%;
+        justify-content: space-between;
+        background-color: #fbe7c6;
+
+        &-title {
+            padding-left: 10px;
+            font-weight: 700;
+        }
+
+        &-closeButton {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+    }
+
+    &-contentContainer {
+        display: flex;
+        flex-direction: column;
+        margin: auto 0;
+    }
+
+    &-buttonsContainer {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+
+        & > button {
+            margin-left: 10px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+    }
+}

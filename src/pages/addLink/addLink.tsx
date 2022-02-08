@@ -34,7 +34,7 @@ export function AddLink() {
                 </span>
                 <input value={name} onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                     setName(event.target.value);
-                }} className='addLink-inputContainer-input' placeholder='e.g. Alphabet' />
+                }} className='addLink-inputContainer-input' placeholder='e.g. Hepsiburada' />
             </div>
 
             <div className='addLink-inputContainer'>

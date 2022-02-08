@@ -1,0 +1,13 @@
+.toast {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translate(-50%, 0);
+    top: 10%;
+    width: 50%;
+    border: 1px solid green;
+    background-color: greenyellow;
+    border-radius: 8px;
+    height: 60px;
+}
