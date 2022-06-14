@@ -29,54 +29,52 @@ export function Home() {
 
         fetch(apiURL)
             .then(response => response.json())
-            .then(data => setCoinData(data.slice(0, 5))
-            )
+            .then(data => setCoinData(data.slice(0, 5)))
     }, [])
 
     return (
         <div className='home'>
-
-
             <h1>
                 Coin Prices
             </h1>
 
             <table>
-                <tr>
-                    <th>
-                        Symbol
-                    </th>
-                    <th>
-                        Ask Price
-                    </th>
-                    <th>
-                        Volume
-                    </th>
-                    <th>
-                        Count
-                    </th>
-                </tr>
+                <tbody>
+                    <tr>
+                        <th>
+                            Symbol
+                        </th>
+                        <th>
+                            Ask Price
+                        </th>
+                        <th>
+                            Volume
+                        </th>
+                        <th>
+                            Count
+                        </th>
+                    </tr>
 
-                {
-                    coinData !== undefined && coinData.length > 0 &&
-                    coinData.map((coin: any) => (
-                        <tr key={coin.symbol}>
-                            <td>
-                                {coin.symbol}
-                            </td>
-                            <td>
-                                {Math.floor(coin.askPrice) }
-                            </td>
-                            <td>
-                                {Math.floor(coin.volume)}
-                            </td>
-                            <td>
-                                {coin.count}
-                            </td>
-                        </tr>
-                    )
-            )}
-
+                    {
+                        coinData !== undefined && coinData.length > 0 &&
+                        coinData.map((coin: any) => (
+                            <tr key={coin.symbol}>
+                                <td>
+                                    {coin.symbol}
+                                </td>
+                                <td>
+                                    {Math.floor(coin.askPrice)}
+                                </td>
+                                <td>
+                                    {Math.floor(coin.volume)}
+                                </td>
+                                <td>
+                                    {coin.count}
+                                </td>
+                            </tr>
+                        )
+                        )}
+                </tbody>
             </table>
 
 
